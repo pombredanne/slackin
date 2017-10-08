@@ -1,6 +1,6 @@
 {
   "name": "slackin",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Public Slack organizations made easy",
   "repository": "rauchg/slackin",
   "main": "dist/index",
@@ -43,7 +43,7 @@
     "supertest": "0.15.0"
   },
   "engines": {
-    "node": "4.5.0"
+    "node": "6.11.1"
   },
   "bin": {
     "slackin": "./bin/slackin"
@@ -57,6 +57,22 @@
   },
   "scripts": {
     "test": "mocha && eslint lib/**",
-    "postinstall": "gulp"
+    "postinstall": "gulp",
+    "build": "gulp",
+    "start": "chmod +x bin/slackin && ./bin/slackin"
+  },
+  "now": {
+    "type": "npm",
+    "files": [
+      "bin",
+      "lib",
+      "gulpfile.babel.js"
+    ],
+    "env": [
+      "SLACK_API_TOKEN",
+      "SLACK_SUBDOMAIN",
+      "GOOGLE_CAPTCHA_SECRET",
+      "GOOGLE_CAPTCHA_SITEKEY"
+    ]
   }
 }
